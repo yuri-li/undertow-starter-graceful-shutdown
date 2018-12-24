@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class GracefulShutdownConfiguration(val wrapper: UndertowWrapper, val listener: ShutdownListener) {
     @Bean
-    fun undertowCustomizer(): UndertowDeploymentInfoCustomizer = object : UndertowDeploymentInfoCustomizer {
+    fun undertowCustomizer() = object : UndertowDeploymentInfoCustomizer {
         override fun customize(deploymentInfo: DeploymentInfo): Unit {
             deploymentInfo.addOuterHandlerChainWrapper(wrapper)
         }
